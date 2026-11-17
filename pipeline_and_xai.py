@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import joblib
 
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
@@ -88,9 +89,20 @@ pipeline = Pipeline([
 ])
 
 # Train the pipeline
+# Train the pipeline
 pipeline.fit(X_train, y_train)
 
 print("\nPipeline training completed successfully.")
+
+# Save the trained pipeline
+joblib.dump(pipeline, "telecom_rf_pipeline.joblib")
+
+print("Model saved successfully!")
+
+# Save the trained pipeline
+joblib.dump(pipeline, "telecom_rf_pipeline.joblib")
+
+print("Model saved successfully!")
 
 # Make predictions on the test data
 y_prob = pipeline.predict_proba(X_test)[:, 1]
@@ -168,3 +180,5 @@ plt.savefig("shap_summary.png", dpi=300)
 plt.show()
 
 print("\nFeature importance plot saved as shap_summary.png")
+
+
